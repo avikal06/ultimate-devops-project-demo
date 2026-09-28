@@ -13,7 +13,7 @@ interface IProps extends InputHTMLAttributes<HTMLSelectElement | HTMLInputElemen
 const Input = ({ type, id = '', children, label, ...props }: IProps) => {
   return (
     <S.InputRow>
-      <S.InputLabel>{label}</S.InputLabel>
+      <S.InputLabel htmlFor={id}>{label}</S.InputLabel>
       {type === 'select' ? (
         <>
           <S.Select id={id} {...props}>

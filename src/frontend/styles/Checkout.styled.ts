@@ -4,24 +4,35 @@
 import styled from 'styled-components';
 
 export const Checkout = styled.div`
-  margin: 20px;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
+  margin: 0 auto;
+  padding: 32px 16px 0;
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    margin: 100px;
+    padding: 64px 32px 0;
   }
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 16px;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 120px;
+  margin-bottom: 24px;
+`;
 
-  ${({ theme }) => theme.breakpoints.desktop} {
-    display: grid;
-    grid-template-columns: auto;
+export const SuccessIcon = styled.div`
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.success};
+  box-shadow: 0 0 0 10px ${({ theme }) => theme.colors.successSoft}, 0 12px 30px -8px rgba(16, 185, 129, 0.6);
+
+  svg {
+    width: 32px;
+    height: 32px;
   }
 `;
 
@@ -31,7 +42,7 @@ export const DataRow = styled.div`
   justify-content: space-between;
   grid-template-columns: 1fr 1fr;
   padding: 24px 0;
-  border-top: solid 1px rgba(154, 160, 166, 0.5);
+  border-top: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
 
   span:last-of-type {
     text-align: right;
@@ -39,33 +50,33 @@ export const DataRow = styled.div`
 `;
 
 export const ItemList = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+  width: 100%;
+  max-width: 960px;
+  margin: 24px 0;
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    margin: 72px 0;
+    margin: 40px 0;
   }
 `;
 
 export const Title = styled.h1`
+  margin: 12px 0 0;
   text-align: center;
-  margin: 0;
-
-  font-size: ${({ theme }) => theme.sizes.mLarge};
+  font-size: 28px;
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    font-size: ${({ theme }) => theme.sizes.dLarge};
+    font-size: 44px;
   }
 `;
 
-export const Subtitle = styled.h3`
-  text-align: center;
+export const Subtitle = styled.p`
   margin: 0;
-
-  font-size: ${({ theme }) => theme.sizes.mMedium};
+  text-align: center;
   color: ${({ theme }) => theme.colors.textLightGray};
+  font-size: ${({ theme }) => theme.sizes.dSmall};
 
   ${({ theme }) => theme.breakpoints.desktop} {
     font-size: ${({ theme }) => theme.sizes.dMedium};

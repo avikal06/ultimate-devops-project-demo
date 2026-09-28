@@ -6,34 +6,42 @@ import styled from 'styled-components';
 
 export const CartIcon = styled.a`
   position: relative;
-  display: block;
-  margin-left: 25px;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
+  background: ${({ theme }) => theme.colors.surface};
   cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: ${({ theme }) => theme.shadows.md};
+    transform: translateY(-1px);
+  }
 `;
 
 export const Icon = styled(Image).attrs({
-  width: '24',
-  height: '24',
-})`
-  margin-bottom: 3px;
-`;
+  width: '20',
+  height: '20',
+})``;
 
 export const ItemsCount = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
-  top: 9px;
-  left: 15px;
-  width: 15px;
-  height: 15px;
-  font-size: ${({ theme }) => theme.sizes.nano};
-  border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.white};
+  top: -4px;
+  right: -4px;
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: ${({ theme }) => theme.radii.pill};
+  border: 2px solid ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.gradients.primary};
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.otelRed};
+  font-size: ${({ theme }) => theme.sizes.nano};
+  font-weight: ${({ theme }) => theme.fonts.bold};
+  line-height: 1;
 `;

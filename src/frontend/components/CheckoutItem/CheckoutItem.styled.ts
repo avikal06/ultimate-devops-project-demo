@@ -7,24 +7,28 @@ import styled from 'styled-components';
 export const CheckoutItem = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  padding: 25px;
-  border-radius: 5px;
+  padding: 20px;
   border: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
+  border-radius: ${({ theme }) => theme.radii.lg};
+  background: ${({ theme }) => theme.colors.surface};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    grid-template-columns: 40% 40% 1fr;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 24px;
   }
 `;
 
 export const ItemDetails = styled.div`
   display: flex;
-  gap: 25px;
-  padding-bottom: 25px;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    padding-bottom: 0;
-    padding-right: 25px;
+    padding: 0 24px 0 0;
     border-bottom: none;
     border-right: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
   }
@@ -33,58 +37,83 @@ export const ItemDetails = styled.div`
 export const Details = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 
   span,
   p {
     margin: 0;
-    font-weight: ${({ theme }) => theme.fonts.regular};
+    color: ${({ theme }) => theme.colors.textLightGray};
+    font-size: 14px;
   }
 `;
 
 export const ItemName = styled.h5`
-  margin: 0;
-  font-size: ${({ theme }) => theme.sizes.mLarge};
+  margin: 0 0 2px;
+  font-size: 17px;
 `;
 
 export const ShippingData = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 25px 0;
+  gap: 4px;
+  padding: 20px 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
 
   p {
     margin: 0;
-    font-weight: ${({ theme }) => theme.fonts.light};
+    color: ${({ theme }) => theme.colors.textLightGray};
+    font-size: 14px;
   }
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    padding: 0 25px;
+    padding: 0 24px;
     border-bottom: none;
-    border-right: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
   }
 `;
 
 export const Status = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding-top: 25px;
-  gap: 10px;
+  justify-self: start;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 6px 14px;
+  border-radius: ${({ theme }) => theme.radii.pill};
+  background: ${({ theme }) => theme.colors.successSoft};
+
+  span {
+    color: #047857;
+    font-size: 13px;
+    font-weight: ${({ theme }) => theme.fonts.semiBold};
+  }
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    padding-top: 0;
+    justify-self: end;
+    margin-top: 0;
   }
 `;
 
 export const ItemImage = styled(Image).attrs({
-  width: '80',
-  height: '80',
+  width: '72',
+  height: '72',
 })`
-  border-radius: 5px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: ${({ theme }) => theme.radii.md};
+  border: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
 `;
 
 export const SeeMore = styled.a`
-  color: ${({ theme }) => theme.colors.otelBlue};
+  align-self: flex-start;
+  margin-top: 2px;
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: 14px;
+  font-weight: ${({ theme }) => theme.fonts.semiBold};
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 `;

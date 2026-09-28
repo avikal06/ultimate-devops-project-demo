@@ -26,6 +26,11 @@ const Checkout: NextPage = () => {
       <Layout>
         <S.Checkout>
           <S.Container>
+            <S.SuccessIcon aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12.5l4.5 4.5L19 7.5" />
+              </svg>
+            </S.SuccessIcon>
             <S.Title>Your order is complete!</S.Title>
             <S.Subtitle>We&apos;ve sent you a confirmation email.</S.Subtitle>
 

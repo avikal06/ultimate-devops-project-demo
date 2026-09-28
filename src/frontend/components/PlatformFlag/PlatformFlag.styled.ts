@@ -4,22 +4,25 @@
 import styled from 'styled-components';
 
 export const Block = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100px;
-  height: 27px;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: ${({ theme }) => theme.radii.pill};
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fcd34d;
   font-size: ${({ theme }) => theme.sizes.mSmall};
-  font-weight: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.otelYellow};
+  font-weight: ${({ theme }) => theme.fonts.semiBold};
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 
-  ${({ theme }) => theme.breakpoints.desktop} {
-    width: 190px;
-    height: 50px;
-    font-size: ${({ theme }) => theme.sizes.dSmall};
+  &::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fbbf24;
+    box-shadow: 0 0 8px #fbbf24;
   }
 `;

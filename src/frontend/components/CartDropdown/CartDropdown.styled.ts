@@ -2,99 +2,134 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Button from '../Button';
+
+const cartIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const CartDropdown = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  padding: 25px;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
-  background: ${({ theme }) => theme.colors.white};
-  z-index: 1000;
-  border-radius: 5px;
-  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  padding: 24px;
+  background: ${({ theme }) => theme.colors.surface};
+  box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.35);
+  animation: ${cartIn} 0.2s ease-out;
 
   ${({ theme }) => theme.breakpoints.desktop} {
     position: absolute;
+    top: 84px;
+    right: 24px;
     width: 400px;
-    top: 95px;
-    right: 17px;
-    max-height: 650px;
+    height: auto;
+    max-height: 640px;
+    border: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
+    border-radius: ${({ theme }) => theme.radii.lg};
   }
 `;
 
 export const Title = styled.h5`
-  margin: 0px;
-  font-size: ${({ theme }) => theme.sizes.mxLarge};
-
-  ${({ theme }) => theme.breakpoints.desktop} {
-    font-size: ${({ theme }) => theme.sizes.dLarge};
-  }
+  margin: 0;
+  font-size: 22px;
 `;
 
 export const ItemList = styled.div`
+  overflow-y: auto;
+
   ${({ theme }) => theme.breakpoints.desktop} {
-    max-height: 450px;
-    overflow-y: scroll;
+    max-height: 420px;
   }
 `;
 
 export const Item = styled.div`
   display: grid;
-  grid-template-columns: 29% 59%;
-  gap: 2%;
-  padding: 25px 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.textLightGray};
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
+
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 export const ItemImage = styled(Image).attrs({
-  width: '80',
-  height: '80',
+  width: '64',
+  height: '64',
 })`
-  border-radius: 5px;
+  object-fit: cover;
+  border-radius: ${({ theme }) => theme.radii.md};
+  border: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
 `;
 
 export const ItemName = styled.p`
-  margin: 0px;
-  font-size: ${({ theme }) => theme.sizes.mLarge};
-  font-weight: ${({ theme }) => theme.fonts.regular};
+  margin: 0;
+  font-size: 15px;
+  font-weight: ${({ theme }) => theme.fonts.semiBold};
+  line-height: 1.35;
 `;
 
 export const ItemDetails = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 2px;
+
+  & > span {
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: ${({ theme }) => theme.fonts.semiBold};
+  }
 `;
 
-export const ItemQuantity = styled(ItemName)`
-  font-size: ${({ theme }) => theme.sizes.mMedium};
+export const ItemQuantity = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.colors.textLightGray};
+  font-size: 13px;
 `;
 
-export const CartButton = styled(Button)``;
+export const CartButton = styled(Button)`
+  width: 100%;
+`;
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.lightBorderGray};
 
-  ${({ theme }) => theme.breakpoints.desktop} {
-    span {
-      display: none;
+  span {
+    color: ${({ theme }) => theme.colors.textLightGray};
+    font-size: 14px;
+    font-weight: ${({ theme }) => theme.fonts.semiBold};
+    cursor: pointer;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.textGray};
     }
   }
 `;
 
-export const EmptyCart = styled.h3`
-  margin: 0;
-  margin-top: 25px;
-  font-size: ${({ theme }) => theme.sizes.mLarge};
+export const EmptyCart = styled.p`
+  margin: 24px 0 8px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.textLightGray};
+  font-size: 15px;
 `;

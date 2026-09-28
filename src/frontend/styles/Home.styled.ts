@@ -5,10 +5,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  padding: 0 20px;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
+  margin: 0 auto;
+  padding: 0 16px;
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    padding: 0 100px;
+    padding: 0 32px;
   }
 `;
 
@@ -20,26 +22,53 @@ export const Row = styled.div`
 
 export const Content = styled.div`
   width: 100%;
+  margin-top: 40px;
+
   ${({ theme }) => theme.breakpoints.desktop} {
-    margin-top: 100px;
+    margin-top: 72px;
   }
 `;
 
-export const HotProducts = styled.div`
-  margin-bottom: 20px;
+export const HotProducts = styled.section`
+  margin-bottom: 56px;
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    margin-bottom: 100px;
+    margin-bottom: 96px;
   }
 `;
 
-export const HotProductsTitle = styled.h1`
-  font-size: ${({ theme }) => theme.sizes.mLarge};
+export const SectionHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+
+  ${({ theme }) => theme.breakpoints.desktop} {
+    margin-bottom: 36px;
+  }
+`;
+
+export const SectionEyebrow = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: 13px;
+  font-weight: ${({ theme }) => theme.fonts.semiBold};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
+
+export const HotProductsTitle = styled.h2`
+  margin: 0;
+  font-size: ${({ theme }) => theme.sizes.mxLarge};
   font-weight: ${({ theme }) => theme.fonts.bold};
 
   ${({ theme }) => theme.breakpoints.desktop} {
-    font-size: ${({ theme }) => theme.sizes.dxLarge};
+    font-size: 40px;
   }
+`;
+
+export const SectionSubtitle = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.colors.textLightGray};
 `;
 
 export const Home = styled.div`

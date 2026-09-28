@@ -62,18 +62,18 @@ const CartItems = ({ productList, shouldShowPrice = true }: IProps) => {
         <CartItem key={productId} product={product} quantity={quantity} />
       ))}
       {shouldShowPrice && (
-        <>
+        <S.Summary>
           <S.DataRow>
             <span>Shipping</span>
             <ProductPrice price={shippingConst} />
           </S.DataRow>
-          <S.DataRow>
+          <S.TotalRow>
             <S.TotalText>Total</S.TotalText>
             <S.TotalText>
               <ProductPrice price={total} />
             </S.TotalText>
-          </S.DataRow>
-        </>
+          </S.TotalRow>
+        </S.Summary>
       )}
     </S.CartItems>
   );

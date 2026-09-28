@@ -12,6 +12,7 @@ const Recommendations = () => {
   return (
     <S.Recommendations data-cy={CypressFields.RecommendationList}>
       <S.TitleContainer>
+        <S.Eyebrow>Recommended for you</S.Eyebrow>
         <S.Title>You May Also Like</S.Title>
       </S.TitleContainer>
       <S.ProductList>

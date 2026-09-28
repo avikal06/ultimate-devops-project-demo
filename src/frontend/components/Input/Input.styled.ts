@@ -1,54 +1,67 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Input = styled.input`
-  width: -webkit-fill-available;
-  border: none;
-  padding: 16px;
-  outline: none;
-
+const field = css`
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid ${({ theme }) => theme.colors.borderGray};
+  border-radius: ${({ theme }) => theme.radii.md};
+  background: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.textGray};
+  font-size: 15px;
   font-weight: ${({ theme }) => theme.fonts.regular};
-  font-size: ${({ theme }) => theme.sizes.dMedium};
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
-  border-radius: 10px;
-  background: #f9f9f9;
-  border: 1px solid #cacaca;
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.textLightGray};
+  }
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+  }
+
+  &:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: ${({ theme }) => theme.colors.otelRed};
+  }
 `;
 
-export const InputLabel = styled.p`
-  font-size: ${({ theme }) => theme.sizes.dMedium};
+export const Input = styled.input`
+  ${field};
+`;
+
+export const InputLabel = styled.label`
+  display: block;
+  margin: 0 0 6px;
+  color: ${({ theme }) => theme.colors.textGray};
+  font-size: 13px;
   font-weight: ${({ theme }) => theme.fonts.semiBold};
-  margin: 0;
-  margin-bottom: 15px;
 `;
 
 export const Select = styled.select`
-  width: 100%;
-  border: none;
-
-  padding: 16px;
-  font-weight: ${({ theme }) => theme.fonts.regular};
-  font-size: ${({ theme }) => theme.sizes.dMedium};
-
-  border-radius: 10px;
-  background: #f9f9f9;
-  border: 1px solid #cacaca;
+  ${field};
+  padding-right: 36px;
+  cursor: pointer;
 `;
 
 export const InputRow = styled.div`
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 `;
 
 export const Arrow = styled.img.attrs({
   src: '/icons/Chevron.svg',
-  alt: 'arrow',
+  alt: '',
 })`
   position: absolute;
-  right: 20px;
+  right: 14px;
+  bottom: 19px;
   width: 10px;
-  height: 5px;
-  top: 64px;
+  height: 10px;
+  opacity: 0.55;
+  pointer-events: none;
 `;

@@ -3,6 +3,7 @@
 
 import { NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -66,29 +67,47 @@ const ProductDetail: NextPage = () => {
     >
       <Layout>
         <S.ProductDetail data-cy={CypressFields.ProductDetail}>
+          <S.Breadcrumb aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">/</span>
+            <span>{name}</span>
+          </S.Breadcrumb>
           <S.Container>
             <S.Image $src={"/images/products/" + picture} data-cy={CypressFields.ProductPicture} />
             <S.Details>
+              {!!categories?.length && (
+                <S.Categories>
+                  {categories.map(category => (
+                    <S.Category key={category}>{category}</S.Category>
+                  ))}
+                </S.Categories>
+              )}
               <S.Name data-cy={CypressFields.ProductName}>{name}</S.Name>
-              <S.Description data-cy={CypressFields.ProductDescription}>{description}</S.Description>
               <S.ProductPrice>
                 <ProductPrice price={priceUsd} />
               </S.ProductPrice>
-              <S.Text>Quantity</S.Text>
-              <Select
-                data-cy={CypressFields.ProductQuantity}
-                onChange={event => setQuantity(+event.target.value)}
-                value={quantity}
-              >
-                {quantityOptions.map(option => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </Select>
-              <S.AddToCart data-cy={CypressFields.ProductAddToCart} onClick={onAddItem}>
-                <Image src="/icons/Cart.svg" height="15" width="15" alt="cart" /> Add To Cart
-              </S.AddToCart>
+              <S.Description data-cy={CypressFields.ProductDescription}>{description}</S.Description>
+              <S.PurchaseCard>
+                <S.PurchaseRow>
+                  <S.QuantityField>
+                    <S.Text>Quantity</S.Text>
+                    <Select
+                      data-cy={CypressFields.ProductQuantity}
+                      onChange={event => setQuantity(+event.target.value)}
+                      value={quantity}
+                    >
+                      {quantityOptions.map(option => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </Select>
+                  </S.QuantityField>
+                  <S.AddToCart data-cy={CypressFields.ProductAddToCart} onClick={onAddItem}>
+                    <Image src="/icons/Cart.svg" height="16" width="16" alt="" /> Add To Cart
+                  </S.AddToCart>
+                </S.PurchaseRow>
+              </S.PurchaseCard>
             </S.Details>
           </S.Container>
           <Recommendations />

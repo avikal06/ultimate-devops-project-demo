@@ -50,13 +50,16 @@ const ProductCard = ({
   return (
     <S.Link href={`/product/${id}`}>
       <S.ProductCard data-cy={CypressFields.ProductCard}>
-        <S.Image $src={imageSrc} />
-        <div>
+        <S.ImageWrapper>
+          <S.Image $src={imageSrc} role="img" aria-label={name} />
+          <S.ViewBadge>View details</S.ViewBadge>
+        </S.ImageWrapper>
+        <S.Body>
           <S.ProductName>{name}</S.ProductName>
           <S.ProductPrice>
             <ProductPrice price={priceUsd} />
           </S.ProductPrice>
-        </div>
+        </S.Body>
       </S.ProductCard>
     </S.Link>
   );

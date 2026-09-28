@@ -27,9 +27,13 @@ const Home: NextPage = () => {
           <S.Row>
             <S.Content>
               <S.HotProducts>
-                <S.HotProductsTitle data-cy={CypressFields.HotProducts} id="hot-products">
-                  Hot Products
-                </S.HotProductsTitle>
+                <S.SectionHeader>
+                  <S.SectionEyebrow>Trending now</S.SectionEyebrow>
+                  <S.HotProductsTitle data-cy={CypressFields.HotProducts} id="hot-products">
+                    Hot Products
+                  </S.HotProductsTitle>
+                  <S.SectionSubtitle>Our most popular gear for exploring the night sky.</S.SectionSubtitle>
+                </S.SectionHeader>
                 <ProductList productList={productList} />
               </S.HotProducts>
             </S.Content>

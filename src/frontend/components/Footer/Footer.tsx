@@ -20,16 +20,21 @@ const Footer = () => {
 
   return (
     <S.Footer>
-      <div>
-        <p>This website is hosted for demo purpose only. It is not an actual shop.</p>
+      <S.Inner>
+        <S.Brand>
+          <S.BrandName>Astronomy Shop</S.BrandName>
+          <p>This website is hosted for demo purpose only. It is not an actual shop.</p>
+        </S.Brand>
+        <S.Meta>
+          <S.Session data-cy={CypressFields.SessionId}>session-id: {sessionId}</S.Session>
+          <PlatformFlag />
+        </S.Meta>
+      </S.Inner>
+      <S.Bottom>
         <p>
-          <span data-cy={CypressFields.SessionId}>session-id: {sessionId}</span>
+          © {currentYear} OpenTelemetry (<a href="https://github.com/open-telemetry/opentelemetry-demo">Source Code</a>)
         </p>
-      </div>
-      <p>
-        @ {currentYear} OpenTelemetry (<a href="https://github.com/open-telemetry/opentelemetry-demo">Source Code</a>)
-      </p>
-      <PlatformFlag />
+      </S.Bottom>
     </S.Footer>
   );
 };

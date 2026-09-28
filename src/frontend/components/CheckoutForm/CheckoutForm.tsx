@@ -80,7 +80,11 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
         });
       }}
     >
-      <S.Title>Shipping Address</S.Title>
+      <S.Section>
+      <S.Title>
+        <S.Step>1</S.Step>
+        Shipping Address
+      </S.Title>
 
       <Input
         label="E-mail Address"
@@ -124,10 +128,13 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
           required
         />
       </S.StateRow>
+      </S.Section>
 
-      <div>
-        <S.Title>Payment Method</S.Title>
-      </div>
+      <S.Section>
+      <S.Title>
+        <S.Step>2</S.Step>
+        Payment Method
+      </S.Title>
 
       <Input
         type="text"
@@ -188,6 +195,7 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
           onChange={handleChange}
         />
       </S.CardRow>
+      </S.Section>
 
       <S.SubmitContainer>
         <Link href="/">

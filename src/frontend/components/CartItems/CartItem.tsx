@@ -24,7 +24,7 @@ const CartItem = ({
         </S.NameContainer>
       </Link>
       <S.CartItemDetails>
-        <p>{quantity}</p>
+        <S.Quantity>{quantity}</S.Quantity>
       </S.CartItemDetails>
       <S.CartItemDetails>
         <S.PriceContainer>
